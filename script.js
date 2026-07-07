@@ -1,37 +1,46 @@
-const chart = LightweightCharts.createChart(document.getElementById('chart'), {
-    width: window.innerWidth,
-    height: 500,
-    layout: {
-        background: { color: '#111111' },
-        textColor: '#ffffff',
-    },
-    grid: {
-        vertLines: { color: '#333333' },
-        horzLines: { color: '#333333' },
-    },
-});
+const ruler = document.getElementById("ruler");
 
-const candleSeries = chart.addCandlestickSeries();
+let hargaAwal = 2950;
 
-candleSeries.setData([
-{time:'2026-07-01',open:2900,high:2940,low:2880,close:2920},
-{time:'2026-07-02',open:2920,high:2960,low:2910,close:2950},
-{time:'2026-07-03',open:2950,high:3000,low:2940,close:2980},
-{time:'2026-07-04',open:2980,high:3010,low:2960,close:2990},
-{time:'2026-07-05',open:2990,high:3030,low:2970,close:3010},
-]);
+// Membuat garis dan angka harga
+function gambarRuler() {
 
-document.getElementById("setHarga").onclick = function () {
+    ruler.innerHTML = "";
 
-    const awal = Number(document.getElementById("hargaAwal").value);
+    for (let y = 0; y <= 700; y += 20) {
 
-    const akhir = 3000;
+        const line = document.createElement("div");
+        line.className = "line";
+        line.style.top = y + "px";
 
-    const poin = akhir - awal;
+        const price = document.createElement("div");
+        price.className = "price";
+        price.style.top = y + "px";
 
-    const persen = ((poin / awal) * 100).toFixed(2);
+        // Harga dari bawah ke atas
+        price.innerHTML = 3300 - y;
 
-    document.getElementById("akhir").innerHTML = akhir;
-    document.getElementById("poin").innerHTML = poin;
-    document.getElementById("persen").innerHTML = persen + "%";
+        ruler.appendChild(line);
+        ruler.appendChild(price);
+    }
+
+}
+
+gambarRuler();
+
+document.getElementById("set").onclick = function(){
+
+    hargaAwal =
+    Number(document.getElementById("awal").value);
+
+    document.getElementById("awalText").innerHTML =
+    hargaAwal;
+
+    document.getElementById("akhirText").innerHTML =
+    hargaAwal;
+
+    document.getElementById("poin").innerHTML = 0;
+
+    document.getElementById("persen").innerHTML = "0%";
+
 };
