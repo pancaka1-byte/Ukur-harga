@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Ukur Harga</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+
+</head>
+
+<body>
+
+<h2>Ukur Target Profit</h2>
+
+<div class="panel">
+<label>Harga Awal</label>
+<input type="number" id="hargaAwal" placeholder="2950">
+
+<button id="setHarga">Set Harga</button>
+</div>
+
+<div id="chart"></div>
+
+<div class="hasil">
+<h3>Hasil</h3>
+
+<p>Harga Akhir :
+<span id="akhir">-</span></p>
+
+<p>Poin :
+<span id="poin">0</span></p>
+
+<p>Persentase :
+<span id="persen">0%</span></p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
